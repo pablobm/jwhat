@@ -62,14 +62,16 @@ public class JWhatMidlet
 	private Screen createScreen() {
 		Hashtable props = createPropertiesTable();
 		Enumeration keys = props.keys();
-		String[] keys_array = new String[props.size()];
+		List ret = new List("Supported profiles", List.IMPLICIT);
 		int i = 0;
 		
 		while(keys.hasMoreElements()) {
-			keys_array[i++] = (String)keys.nextElement();
-		}		
+			String e = (String)keys.nextElement();
+			String line = e + ": " + props.get(e);
+			ret.append(line, null);
+		}
 		
-		return new List("Supported profiles", List.IMPLICIT, keys_array, null);
+		return ret;
 	}
 }
 
