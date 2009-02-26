@@ -4,6 +4,8 @@ import java.util.*;
 import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 
+import com.pablobm.jwhat.profiles.*;
+
 public class JWhatMidlet
 	extends MIDlet
 	implements CommandListener {
@@ -12,26 +14,7 @@ public class JWhatMidlet
 
 	public JWhatMidlet() {
 		screen = createScreen();
-		
-		
-		
-		
-		/*
-		String v = versionOfJSR75();
-		String support_str = null;
-		mMainForm = new Form("HiFellas");
-		mMainForm.append(new StringItem("Greeting", "Hi Pablo!\n"));
-		if (v != null) {
-			support_str = "v" + v;
-		}
-		else {
-			support_str = "not available";
-		}
-		mMainForm.append(new StringItem("JSR 75 support:", support_str + "\n"));
-		mMainForm.append(new StringItem(null, "...and that was it!"));
-		mMainForm.addCommand(new Command("Exit", Command.EXIT, 0));
-		mMainForm.setCommandListener(this);
-		*/
+		new JSR75Support();
 	}
 
 	public void startApp() {
@@ -46,9 +29,6 @@ public class JWhatMidlet
 		notifyDestroyed();
 	}
 	
-	public String versionOfJSR75() {
-		return System.getProperty("microedition.pim.version");
-	}
 	
 	public Hashtable createPropertiesTable() {
 		Hashtable ret = new Hashtable();
@@ -67,7 +47,8 @@ public class JWhatMidlet
 		
 		while(keys.hasMoreElements()) {
 			String e = (String)keys.nextElement();
-			String line = e + ": " + props.get(e);
+			String propname = (String)props.get(e);
+			String line = e + ": " + System.getProperty(propname);
 			ret.append(line, null);
 		}
 		
