@@ -1,0 +1,7 @@
+MIDlet-1: JWhat, JWhat.png, com.pablobm.jwhat.JWhatMidlet
+MIDlet-Description: Detects supported Java profiles
+MIDlet-Name: JWhat
+MIDlet-Vendor: Unknown
+MIDlet-Version: 1.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.0
