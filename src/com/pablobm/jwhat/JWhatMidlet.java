@@ -14,7 +14,6 @@ public class JWhatMidlet
 
 	public JWhatMidlet() {
 		screen = createScreen();
-		new JSR75Support();
 	}
 
 	public void startApp() {
@@ -40,15 +39,13 @@ public class JWhatMidlet
 	}
 	
 	private Screen createScreen() {
-		Hashtable props = createPropertiesTable();
-		Enumeration keys = props.keys();
-		List ret = new List("Supported profiles", List.IMPLICIT);
-		int i = 0;
+		ProfileSupportFactory psf = ProfileSupportFactory.getInstance();
+		Enumeration profiles = psf.createAll();
+		List ret = new List("Supported Java profiles", List.IMPLICIT);
 		
-		while(keys.hasMoreElements()) {
-			String e = (String)keys.nextElement();
-			String propname = (String)props.get(e);
-			String line = e + ": " + System.getProperty(propname);
+		while(profiles.hasMoreElements()) {
+			ProfileSupport ps = (ProfileSupport)profiles.nextElement();
+			String line = ps.getName() + ": " + (ps.hasSupport() ? "v" + ps.getVersion() : "none");
 			ret.append(line, null);
 		}
 		

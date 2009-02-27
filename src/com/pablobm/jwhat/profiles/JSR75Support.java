@@ -1,14 +1,8 @@
 package com.pablobm.jwhat.profiles;
 
-public class JSR75Support {
-
-	public final int NO_SUPPORT = 0;
-	public final int SUPPORTED = 1;
-
-	public final String name;
-	public String version;
-	public int supportLevel;
-	
+public class JSR75Support
+	extends BaseProfileSupport
+{
 	public JSR75Support() {
 		name = "JSR-75";
 		version = System.getProperty("microedition.pim.version");
