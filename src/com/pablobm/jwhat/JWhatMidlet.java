@@ -45,7 +45,7 @@ public class JWhatMidlet
 		
 		while(profiles.hasMoreElements()) {
 			ProfileSupport ps = (ProfileSupport)profiles.nextElement();
-			String line = ps.getName() + ": " + (ps.hasSupport() ? "v" + ps.getVersion() : "none");
+			String line = ps.getName() + ": " + (ps.hasSupport() ? ps.getSummary() : "none");
 			ret.append(line, null);
 		}
 		
