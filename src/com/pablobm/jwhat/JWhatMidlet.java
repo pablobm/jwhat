@@ -28,7 +28,6 @@ public class JWhatMidlet
 		notifyDestroyed();
 	}
 	
-	
 	public Hashtable createPropertiesTable() {
 		Hashtable ret = new Hashtable();
 		ret.put("JSR-75", "microedition.pim.version");
@@ -45,7 +44,7 @@ public class JWhatMidlet
 		
 		while(profiles.hasMoreElements()) {
 			ProfileSupport ps = (ProfileSupport)profiles.nextElement();
-			String line = ps.getName() + ": " + (ps.hasSupport() ? ps.getSummary() : "none");
+			String line = ps.getName() + ": " + ps.getSummary();
 			ret.append(line, null);
 		}
 		
