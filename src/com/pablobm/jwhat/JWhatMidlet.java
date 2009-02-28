@@ -11,9 +11,14 @@ public class JWhatMidlet
 	implements CommandListener {
 
 	private Screen screen;
+	private Command exitCmd;
 
 	public JWhatMidlet() {
+		exitCmd = new Command("Exit", Command.EXIT, 1);
 		screen = createScreen();
+		
+		screen.addCommand(exitCmd);
+		screen.setCommandListener(this);
 	}
 
 	public void startApp() {
@@ -24,8 +29,11 @@ public class JWhatMidlet
 
 	public void destroyApp(boolean unconditional) {}
 
-	public void commandAction(Command c, Displayable s) {
-		notifyDestroyed();
+	public void commandAction(Command cmd, Displayable disp) {
+		if (cmd == exitCmd) {
+			destroyApp(false);
+			notifyDestroyed();
+		}
 	}
 	
 	public Hashtable createPropertiesTable() {
@@ -36,7 +44,7 @@ public class JWhatMidlet
 		
 		return ret;
 	}
-	
+		
 	private Screen createScreen() {
 		ProfileSupportFactory psf = ProfileSupportFactory.getInstance();
 		Enumeration profiles = psf.createAll();
