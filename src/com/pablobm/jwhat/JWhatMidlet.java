@@ -36,15 +36,6 @@ public class JWhatMidlet
 		}
 	}
 	
-	public Hashtable createPropertiesTable() {
-		Hashtable ret = new Hashtable();
-		ret.put("JSR-75", "microedition.pim.version");
-		ret.put("JSR-120", "wireless.messaging.sms.smsc");
-		ret.put("JSR-135", "microedition.media.version");
-		
-		return ret;
-	}
-		
 	private Screen createScreen() {
 		ProfileSupportFactory psf = ProfileSupportFactory.getInstance();
 		Enumeration profiles = psf.createAll();
@@ -52,7 +43,7 @@ public class JWhatMidlet
 		
 		while(profiles.hasMoreElements()) {
 			ProfileSupport ps = (ProfileSupport)profiles.nextElement();
-			String line = ps.getName() + ": " + ps.getSummary();
+			String line = ps.getName() + ": v" + ps.getVersion();
 			ret.append(line, null);
 		}
 		
