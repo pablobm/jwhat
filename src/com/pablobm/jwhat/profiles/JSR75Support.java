@@ -11,7 +11,15 @@ public class JSR75Support
 		longName = "PDA Optional Packages";
 		version = System.getProperty("microedition.pim.version");
 		description = "Access to filesystem and PIM data.";
-		summary = composeSummary();
+		summary = null;
+	}
+
+	public String getSummary() {
+		if (summary == null) {
+			composeSummary();
+		}
+
+		return summary;
 	}
 
 	private String composeSummary() {

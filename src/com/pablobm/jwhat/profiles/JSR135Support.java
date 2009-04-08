@@ -10,7 +10,15 @@ public class JSR135Support
 		version = System.getProperty("microedition.media.version");
 		longName = "Mobile Media API";
 		description = "Handling of media content and protocols";
-		summary = composeSummary();
+		summary = null;
+	}
+
+	public String getSummary() {
+		if (summary == null) {
+			composeSummary();
+		}
+
+		return summary;
 	}
 	
 	private String composeSummary() {
