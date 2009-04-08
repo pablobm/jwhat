@@ -5,6 +5,7 @@ import javax.microedition.lcdui.*;
 import javax.microedition.midlet.*;
 
 import com.pablobm.jwhat.profiles.*;
+import com.pablobm.jwhat.screens.*;
 
 public class JWhatMidlet
 	extends MIDlet
@@ -39,6 +40,7 @@ public class JWhatMidlet
 		}
 		else if (cmd == detailsCmd) {
 			System.out.println(screen.getSelectedIndex());
+			Display.getDisplay(this).setCurrent(new JSR75Screen());
 		}
 	}
 	
