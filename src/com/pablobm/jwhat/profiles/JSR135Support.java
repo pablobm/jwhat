@@ -13,15 +13,7 @@ public class JSR135Support
 		summary = null;
 	}
 
-	public String getSummary() {
-		if (summary == null) {
-			composeSummary();
-		}
-
-		return summary;
-	}
-	
-	private String composeSummary() {
+	protected String composeSummary() {
 		Vector supports = new Vector();
 		
 		if (boolProp("supports.mixing")) {

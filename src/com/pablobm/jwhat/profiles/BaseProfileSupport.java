@@ -20,6 +20,10 @@ public abstract class BaseProfileSupport
 		return description;
 	}
 	public String getSummary() {
+		if (summary == null) {
+			summary = composeSummary();
+		}
+
 		return summary;
 	}
 	public String getVersion() {
@@ -34,5 +38,8 @@ public abstract class BaseProfileSupport
 	}
 	protected String strProp(String property) {
 		return System.getProperty(property);
+	}
+	protected String composeSummary() {
+		return summary;
 	}
 }

@@ -14,15 +14,7 @@ public class JSR75Support
 		summary = null;
 	}
 
-	public String getSummary() {
-		if (summary == null) {
-			composeSummary();
-		}
-
-		return summary;
-	}
-
-	private String composeSummary() {
+	protected String composeSummary() {
 		if ( ! isSupported()) {
 			return "no support";
 		}
