@@ -10,14 +10,17 @@ public class JWhatMidlet
 	extends MIDlet
 	implements CommandListener {
 
-	private Screen screen;
+	private List screen;
 	private Command exitCmd;
+	private Command detailsCmd;
 
 	public JWhatMidlet() {
 		exitCmd = new Command("Exit", Command.EXIT, 1);
+		detailsCmd = new Command("Details", Command.ITEM, 2);
 		screen = createScreen();
 		
 		screen.addCommand(exitCmd);
+		screen.addCommand(detailsCmd);
 		screen.setCommandListener(this);
 	}
 
@@ -34,9 +37,12 @@ public class JWhatMidlet
 			destroyApp(false);
 			notifyDestroyed();
 		}
+		else if (cmd == detailsCmd) {
+			System.out.println(screen.getSelectedIndex());
+		}
 	}
 	
-	private Screen createScreen() {
+	private List createScreen() {
 		ProfileSupportFactory psf = ProfileSupportFactory.getInstance();
 		Enumeration profiles = psf.createAll();
 		List ret = new List("Supported Java profiles", List.IMPLICIT);
