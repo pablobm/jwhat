@@ -24,6 +24,11 @@ public class JSR135Screen
 
 	public void render() {
 		append(version);
+		Enumeration props = properties.elements();
+
+		while (props.hasMoreElements()) {
+			append((Item)props.nextElement());
+		}
 	}
 
 	private Hashtable buildPropertiesTable() {
