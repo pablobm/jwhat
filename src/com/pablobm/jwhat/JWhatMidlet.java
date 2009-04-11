@@ -39,8 +39,7 @@ public class JWhatMidlet
 			notifyDestroyed();
 		}
 		else if (cmd == detailsCmd) {
-			System.out.println(screen.getSelectedIndex());
-			Display.getDisplay(this).setCurrent(new JSR75Screen());
+			Display.getDisplay(this).setCurrent(new JSR135Screen());
 		}
 	}
 	

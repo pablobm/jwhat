@@ -13,6 +13,17 @@ public class JSR135Support
 		summary = null;
 	}
 
+	public Hashtable getFeatures() {
+		Hashtable ret = new Hashtable();
+
+		ret.put("supports.mixing", new BaseFeature("supports.mixing", boolProp("supports.mixing")));
+		ret.put("supports.audio.capture", new BaseFeature("supports.audio.capture", boolProp("supports.audio.capture")));
+		ret.put("supports.video.capture", new BaseFeature("supports.video.capture", boolProp("supports.video.capture")));
+		ret.put("supports.recording", new BaseFeature("supports.recording", boolProp("supports.recording")));
+
+		return ret;
+	}
+
 	protected String composeSummary() {
 		Vector supports = new Vector();
 		
