@@ -8,13 +8,15 @@ import com.pablobm.jwhat.profiles.*;
 public class JSR135Screen
 	extends Form {
 
+	Screen parent;
 	JSR135Support details;
 	StringItem version;
 	Hashtable properties;
 
-	public JSR135Screen() {
+	public JSR135Screen(Screen parent) {
 		super("JSR135");
 
+		this.parent = parent;
 		details = new JSR135Support();
 		version = new StringItem("Version", details.getVersion());
 		properties = buildPropertiesTable();
