@@ -29,6 +29,16 @@ public class BaseFeature
 		this.name = name;
 	}
 
+	public String toString() {
+		String ret = "--unknown--";
+
+		if (value instanceof Boolean) {
+			ret = ((Boolean)value).booleanValue() ? "yes" : "no";
+		}
+
+		return ret;
+	}
+
 	public String strValue() {
 		return (String)this.value;
 	}
