@@ -16,10 +16,10 @@ public class JSR135Support
 	public Hashtable getFeatures() {
 		Hashtable ret = new Hashtable();
 
-		ret.put("supports.mixing", new BaseFeature("supports.mixing", boolProp("supports.mixing")));
-		ret.put("supports.audio.capture", new BaseFeature("supports.audio.capture", boolProp("supports.audio.capture")));
-		ret.put("supports.video.capture", new BaseFeature("supports.video.capture", boolProp("supports.video.capture")));
-		ret.put("supports.recording", new BaseFeature("supports.recording", boolProp("supports.recording")));
+		storeBoolFeature(ret, "supports.mixing");
+		storeBoolFeature(ret, "supports.audio.capture");
+		storeBoolFeature(ret, "supports.video.capture");
+		storeBoolFeature(ret, "supports.recording");
 
 		return ret;
 	}
@@ -55,6 +55,10 @@ public class JSR135Support
 		}
 		
 		return ret;		
+	}
+
+	private void storeBoolFeature(Hashtable storage, String featureName) {
+		storage.put(featureName, new BaseFeature(featureName, boolProp(featureName)));
 	}
 }
 
