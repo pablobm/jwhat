@@ -11,15 +11,15 @@ public class BaseFeature
 	}
 	public BaseFeature(String name, String value) {
 		this.name = name;
-		this.name = value;
+		strValue(value);
 	}
 	public BaseFeature(String name, int value) {
 		this.name = name;
-		this.value = new Integer(value);
+		intValue(value);
 	}
 	public BaseFeature(String name, boolean value) {
 		this.name = name;
-		this.value = new Boolean(value);
+		boolValue(value);
 	}
 
 	public String getName() {
@@ -55,7 +55,7 @@ public class BaseFeature
 
 
 	private void assignUnlessNull(Object value) {
-		if (value == null) {
+		if (value != null) {
 			this.value = value;
 		}
 	}
