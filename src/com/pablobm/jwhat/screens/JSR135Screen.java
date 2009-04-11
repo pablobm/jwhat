@@ -19,6 +19,10 @@ public class JSR135Screen
 		version = new StringItem("Version", details.getVersion());
 		properties = buildPropertiesTable();
 
+		render();
+	}
+
+	public void render() {
 		append(version);
 	}
 
