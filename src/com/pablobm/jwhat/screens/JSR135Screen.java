@@ -28,7 +28,7 @@ public class JSR135Screen
 		render();
 	}
 
-	public Form getForm() {
+	protected Form getForm() {
 		return (Form)getScreen();
 	}
 
