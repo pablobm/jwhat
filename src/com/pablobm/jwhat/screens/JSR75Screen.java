@@ -17,6 +17,7 @@ public class JSR75Screen
 
 		details = new JSR75Support();
 		version = new StringItem("Version", details.getVersion());
+		render();
 
 		new Thread(new DetectionProcess()).start();
 	}
@@ -26,11 +27,19 @@ public class JSR75Screen
 	}
 
 	public void render() {
+		render(false);
+	}
+	public void render(boolean detectionPerformed) {
+		getForm().deleteAll();
 		getForm().append(version);
-		Enumeration props = properties.elements();
-
-		while (props.hasMoreElements()) {
-			getForm().append((Item)props.nextElement());
+		if (detectionPerformed) {
+			Enumeration props = properties.elements();
+			while (props.hasMoreElements()) {
+				getForm().append((Item)props.nextElement());
+			}
+		}
+		else {
+			getForm().append(new StringItem("Available lists", "querying..."));
 		}
 	}
 
@@ -54,7 +63,7 @@ public class JSR75Screen
 
 		public void run() {
 			properties = buildPropertiesTable();
-			render();
+			render(true);
 		}
 	}
 }
