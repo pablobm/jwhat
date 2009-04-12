@@ -7,17 +7,18 @@ import javax.microedition.midlet.*;
 import com.pablobm.jwhat.profiles.*;
 import com.pablobm.jwhat.screens.*;
 
-public class JWhatMidlet
+public class JWhatMIDlet
 	extends MIDlet {
 
-	private Screen mainScreen;
+	private JWhatScreen mainScreen;
 
-	public JWhatMidlet() {
-		mainScreen = new MainScreen(this);
+	public JWhatMIDlet() {
+		JWhatScreen.setMIDlet(this);
+		mainScreen = new MainScreen();
 	}
 
 	public void startApp() {
-		Display.getDisplay(this).setCurrent(mainScreen);
+		mainScreen.display();
 	}
 	
 	public void pauseApp() {}

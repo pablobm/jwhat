@@ -9,31 +9,21 @@ import com.pablobm.jwhat.profiles.*;
 import com.pablobm.jwhat.screens.*;
 
 public class MainScreen
-	extends List
-	implements CommandListener, JWhatScreen {
+	extends JWhatScreen
+	implements CommandListener {
 
-	private JWhatMidlet midlet;
 	private Command exitCmd;
 	private Command detailsCmd;
 
-	public MainScreen(JWhatMidlet midlet) {
-		super("Supported Java profiles", List.IMPLICIT);
-		this.midlet = midlet;
+	public MainScreen() {
+		super(null, new List("Supported Java profiles", List.IMPLICIT));
 		exitCmd = new Command("Exit", Command.EXIT, 1);
 		detailsCmd = new Command("Details", Command.ITEM, 2);
 
-		createScreen();
-		addCommand(exitCmd);
-		addCommand(detailsCmd);
-		setCommandListener(this);
-	}
-
-	public JWhatScreen getParent() {
-		return this;
-	}
-
-	public JWhatMidlet getMIDlet() {
-		return midlet;
+		render();
+		getScreen().addCommand(exitCmd);
+		getScreen().addCommand(detailsCmd);
+		getScreen().setCommandListener(this);
 	}
 
 	public void commandAction(Command cmd, Displayable disp) {
@@ -41,18 +31,22 @@ public class MainScreen
 			getMIDlet().exit();
 		}
 		else if (cmd == detailsCmd) {
-			Display.getDisplay(getMIDlet()).setCurrent(new JSR135Screen(this));
+			new JSR135Screen(this).display();
 		}
 	}
+
+	protected List getList() {
+		return (List)getScreen();
+	}
 	
-	private void createScreen() {
+	private void render() {
 		ProfileSupportFactory psf = ProfileSupportFactory.getInstance();
 		Enumeration profiles = psf.createAll();
 		
 		while(profiles.hasMoreElements()) {
 			ProfileSupport ps = (ProfileSupport)profiles.nextElement();
 			String line = ps.getName() + ": v" + ps.getVersion();
-			append(line, null);
+			getList().append(line, null);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-MIDlet-1: JWhat, JWhat.png, com.pablobm.jwhat.JWhatMidlet
+MIDlet-1: JWhat, JWhat.png, com.pablobm.jwhat.JWhatMIDlet
 MIDlet-Description: Detects supported Java profiles
 MIDlet-Name: JWhat
 MIDlet-Vendor: Unknown

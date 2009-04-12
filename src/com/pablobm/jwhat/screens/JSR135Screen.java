@@ -6,42 +6,44 @@ import javax.microedition.lcdui.*;
 import com.pablobm.jwhat.profiles.*;
 
 public class JSR135Screen
-	extends Form
+	extends JWhatScreen
 	implements CommandListener {
 
-	JWhatScreen parent;
 	JSR135Support details;
 	StringItem version;
 	Hashtable properties;
 	Command backCmd;
 
 	public JSR135Screen(JWhatScreen parent) {
-		super("JSR135");
+		super(parent, new Form("JSR135"));
 
-		this.parent = parent;
 		details = new JSR135Support();
 		version = new StringItem("Version", details.getVersion());
 		properties = buildPropertiesTable();
 		backCmd = new Command("Back", Command.BACK, 1);
 
-		addCommand(backCmd);
-		setCommandListener(this);
+		getForm().addCommand(backCmd);
+		getForm().setCommandListener(this);
 
 		render();
 	}
 
+	public Form getForm() {
+		return (Form)getScreen();
+	}
+
 	public void render() {
-		append(version);
+		getForm().append(version);
 		Enumeration props = properties.elements();
 
 		while (props.hasMoreElements()) {
-			append((Item)props.nextElement());
+			getForm().append((Item)props.nextElement());
 		}
 	}
 
 	public void commandAction(Command cmd, Displayable disp) {
 		if (cmd == backCmd) {
-			Display.getDisplay(parent.getMIDlet()).setCurrent((Screen)parent);
+			getParent().display();
 		}
 	}
 
