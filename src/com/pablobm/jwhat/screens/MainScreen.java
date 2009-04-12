@@ -14,11 +14,13 @@ public class MainScreen
 
 	private Command exitCmd;
 	private Command detailsCmd;
+	private Vector profiles;
 
 	public MainScreen() {
 		super(null, new List("Supported Java profiles", List.IMPLICIT));
 		exitCmd = new Command("Exit", Command.EXIT, 1);
 		detailsCmd = new Command("Details", Command.ITEM, 2);
+		profiles = new Vector();
 
 		render();
 		getScreen().addCommand(exitCmd);
@@ -31,7 +33,7 @@ public class MainScreen
 			getMIDlet().exit();
 		}
 		else if (cmd == detailsCmd) {
-			new JSR135Screen(this).display();
+			changeScreen(getList().getSelectedIndex());
 		}
 	}
 
@@ -41,12 +43,24 @@ public class MainScreen
 	
 	private void render() {
 		ProfileSupportFactory psf = ProfileSupportFactory.getInstance();
-		Enumeration profiles = psf.createAll();
+		Enumeration profileList = psf.createAll();
 		
-		while(profiles.hasMoreElements()) {
-			ProfileSupport ps = (ProfileSupport)profiles.nextElement();
+		while(profileList.hasMoreElements()) {
+			ProfileSupport ps = (ProfileSupport)profileList.nextElement();
 			String line = ps.getName() + ": v" + ps.getVersion();
 			getList().append(line, null);
+			profiles.addElement(ps);
+		}
+	}
+
+	private void changeScreen(int index) {
+		ProfileSupport profile = (ProfileSupport)profiles.elementAt(index);
+
+		if (profile instanceof JSR135Support) {
+			new JSR135Screen(this).display();
+		}
+		else {
+			System.out.println("I don't know what screen to show");
 		}
 	}
 }
