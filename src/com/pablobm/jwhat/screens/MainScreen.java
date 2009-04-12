@@ -10,7 +10,7 @@ import com.pablobm.jwhat.screens.*;
 
 public class MainScreen
 	extends List
-	implements CommandListener {
+	implements CommandListener, JWhatScreen {
 
 	private JWhatMidlet midlet;
 	private Command exitCmd;
@@ -26,6 +26,10 @@ public class MainScreen
 		addCommand(exitCmd);
 		addCommand(detailsCmd);
 		setCommandListener(this);
+	}
+
+	public JWhatScreen getParent() {
+		return this;
 	}
 
 	public JWhatMidlet getMIDlet() {
