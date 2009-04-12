@@ -59,6 +59,9 @@ public class MainScreen
 		if (profile instanceof JSR135Support) {
 			new JSR135Screen(this).display();
 		}
+		else if (profile instanceof JSR75Support) {
+			new JSR75Screen(this).display();
+		}
 		else {
 			System.out.println("I don't know what screen to show");
 		}

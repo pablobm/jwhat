@@ -14,6 +14,34 @@ public class JSR75Support
 		summary = null;
 	}
 
+	public Hashtable getFeatures() {
+		Hashtable ret = new Hashtable();
+
+		Hashtable lists = new Hashtable();
+		lists.put(new Integer(PIM.CONTACT_LIST), "contacts");
+		lists.put(new Integer(PIM.EVENT_LIST), "events");
+		lists.put(new Integer(PIM.TODO_LIST), "todos");
+
+		PIM pim = PIM.getInstance();
+		Enumeration types = lists.keys();
+		while (types.hasMoreElements()) {
+			int type = ((Integer)types.nextElement()).intValue();
+			String listName = (String)lists.get(new Integer(type));
+			boolean supported = true;
+
+			try {
+				pim.openPIMList(type, PIM.READ_ONLY);
+			}
+			catch (PIMException e) {
+				supported = false;
+			}
+
+			ret.put(listName, new BaseFeature(listName, supported));
+		}
+
+		return ret;
+	}
+
 	protected String composeSummary() {
 		if ( ! isSupported()) {
 			return "no support";
