@@ -7,7 +7,6 @@ public abstract class BaseProfileSupport
 	protected String longName;
 	protected String version;
 	protected String description;
-	protected String summary;
 	protected int supportLevel;
 	
 	public String getName() {
@@ -18,13 +17,6 @@ public abstract class BaseProfileSupport
 	}
 	public String getDescription() {
 		return description;
-	}
-	public String getSummary() {
-		if (summary == null) {
-			summary = composeSummary();
-		}
-
-		return summary;
 	}
 	public String getVersion() {
 		return version;
@@ -39,7 +31,5 @@ public abstract class BaseProfileSupport
 	protected String strProp(String property) {
 		return System.getProperty(property);
 	}
-	protected String composeSummary() {
-		return summary;
-	}
 }
+

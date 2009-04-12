@@ -6,6 +6,5 @@ public interface ProfileSupport
 	public String getLongName();
 	public String getVersion();
 	public String getDescription();
-	public String getSummary();
 	public boolean isSupported();
 }
