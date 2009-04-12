@@ -6,17 +6,24 @@ import javax.microedition.lcdui.*;
 import com.pablobm.jwhat.profiles.*;
 
 public class JSR75Screen
-	extends JWhatScreen {
+	extends JWhatScreen
+	implements CommandListener {
 
 	JSR75Support details;
 	Hashtable properties;
 	StringItem version;
+	Command backCmd;
 
 	public JSR75Screen(JWhatScreen parent) {
 		super(parent, new Form("JSR75"));
 
 		details = new JSR75Support();
 		version = new StringItem("Version", details.getVersion());
+		backCmd = new Command("Back", Command.BACK, 1);
+
+		getForm().addCommand(backCmd);
+		getForm().setCommandListener(this);
+
 		render();
 
 		new Thread(new DetectionProcess()).start();
@@ -40,6 +47,12 @@ public class JSR75Screen
 		}
 		else {
 			getForm().append(new StringItem("Available lists", "querying..."));
+		}
+	}
+
+	public void commandAction(Command cmd, Displayable disp) {
+		if (cmd == backCmd) {
+			getParent().display();
 		}
 	}
 
