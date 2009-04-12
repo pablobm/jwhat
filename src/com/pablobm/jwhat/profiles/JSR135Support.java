@@ -23,20 +23,6 @@ public class JSR135Support
 		return ret;
 	}
 
-	private String vectorToString(Vector v) {
-		if (v.size() == 0) {
-			return "no support";
-		}
-
-		Enumeration strings = v.elements();
-		String ret = (String)strings.nextElement();
-		while (strings.hasMoreElements()) {
-			ret += ", " + strings.nextElement();
-		}
-		
-		return ret;		
-	}
-
 	private void storeBoolFeature(Hashtable storage, String featureName) {
 		storage.put(featureName, new BaseFeature(featureName, boolProp(featureName)));
 	}
