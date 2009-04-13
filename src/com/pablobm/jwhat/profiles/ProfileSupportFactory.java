@@ -19,6 +19,7 @@ public class ProfileSupportFactory
 		Vector ret = new Vector();
 		ret.addElement(new JSR75Support());
 		ret.addElement(new JSR135Support());
+		ret.addElement(new WMASupport());
 		return ret.elements();
 	}
 }
