@@ -35,6 +35,15 @@ public class BaseFeature
 		if (value instanceof Boolean) {
 			ret = ((Boolean)value).booleanValue() ? "yes" : "no";
 		}
+		else if (value instanceof String) {
+			ret = (String)value;
+		}
+		else if (value == null) {
+			ret = "none";
+		}
+		else {
+			System.out.println(value);
+		}
 
 		return ret;
 	}

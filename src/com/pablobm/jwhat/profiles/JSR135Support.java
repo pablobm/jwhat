@@ -19,12 +19,19 @@ public class JSR135Support
 		storeBoolFeature(ret, "supports.audio.capture");
 		storeBoolFeature(ret, "supports.video.capture");
 		storeBoolFeature(ret, "supports.recording");
+		storeStringFeature(ret, "audio.encodings");
+		storeStringFeature(ret, "video.encodings");
+		storeStringFeature(ret, "video.snapshots.encodings");
 
 		return ret;
 	}
 
 	private void storeBoolFeature(Hashtable storage, String featureName) {
 		storage.put(featureName, new BaseFeature(featureName, boolProp(featureName)));
+	}
+
+	private void storeStringFeature(Hashtable storage, String featureName) {
+		storage.put(featureName, new BaseFeature(featureName, strProp(featureName)));
 	}
 }
 
