@@ -9,7 +9,7 @@ public class JSR135Screen
 	extends JWhatProfileScreen {
 
 	public JSR135Screen(JWhatScreen parent) {
-		super(parent, "JSR135", new JSR135Support());
+		super(parent, new JSR135Support());
 	}
 
 	protected void render() {

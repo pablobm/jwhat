@@ -15,8 +15,8 @@ public abstract class JWhatProfileScreen
 	protected StringItem version;
 	protected Command backCmd;
 
-	public JWhatProfileScreen(JWhatScreen parent, String name, ProfileSupport details) {
-		super(parent, new Form(name));
+	public JWhatProfileScreen(JWhatScreen parent, ProfileSupport details) {
+		super(parent, new Form(details.getName()));
 
 		this.details = details;
 		version = new StringItem("Version", details.getVersion());

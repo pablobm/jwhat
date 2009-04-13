@@ -9,7 +9,7 @@ public class JSR75Screen
 	extends JWhatProfileScreen {
 
 	public JSR75Screen(JWhatScreen parent) {
-		super(parent, "JSR75", new JSR75Support());
+		super(parent, new JSR75Support());
 	}
 
 	protected void render() {
