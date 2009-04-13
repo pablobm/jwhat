@@ -1,5 +1,7 @@
 package com.pablobm.jwhat.profiles;
 
+import java.util.*;
+
 public abstract class BaseProfileSupport
 	implements ProfileSupport
 {
@@ -24,6 +26,8 @@ public abstract class BaseProfileSupport
 	public boolean isSupported() {
 		return version != null;
 	}
+
+	public abstract Hashtable getFeatures();
 	
 	protected boolean boolProp(String property) {
 		return System.getProperty(property).equals("true");

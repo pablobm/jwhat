@@ -5,7 +5,7 @@ import javax.microedition.lcdui.*;
 import com.pablobm.jwhat.*;
 import com.pablobm.jwhat.screens.*;
 
-public class JWhatScreen {
+public abstract class JWhatScreen {
 
 	private static JWhatMIDlet midlet;
 	public static JWhatMIDlet getMIDlet() {
@@ -34,4 +34,6 @@ public class JWhatScreen {
 	public void display() {
 		Display.getDisplay(JWhatScreen.getMIDlet()).setCurrent(getScreen());
 	}
+
+	protected abstract void render();
 }

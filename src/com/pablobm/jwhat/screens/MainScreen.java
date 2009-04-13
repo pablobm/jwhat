@@ -41,7 +41,7 @@ public class MainScreen
 		return (List)getScreen();
 	}
 	
-	private void render() {
+	protected void render() {
 		ProfileSupportFactory psf = ProfileSupportFactory.getInstance();
 		Enumeration profileList = psf.createAll();
 		
