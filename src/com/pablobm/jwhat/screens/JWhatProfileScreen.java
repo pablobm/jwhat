@@ -38,18 +38,17 @@ public abstract class JWhatProfileScreen
 		}
 	}
 
-	protected Hashtable buildPropertiesTable() {
-		Hashtable features = details.getFeatures();
-		Enumeration keys = features.keys();
-		Hashtable ret = new Hashtable();
+	protected Enumeration buildPropertiesTable() {
+		Enumeration features = details.getFeatures();
+		Vector ret = new Vector();
 		Feature feature;
 
-		while (keys.hasMoreElements()) {
-			feature  = (Feature)features.get(keys.nextElement());
-			ret.put(feature, new StringItem(feature.getName(), feature.toString()));
+		while (features.hasMoreElements()) {
+			feature  = (Feature)features.nextElement();
+			ret.addElement(new StringItem(feature.getName(), feature.toString()));
 		}
 
-		return ret;
+		return ret.elements();
 	}
 
 }

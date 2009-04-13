@@ -27,7 +27,7 @@ public abstract class BaseProfileSupport
 		return version != null;
 	}
 
-	public abstract Hashtable getFeatures();
+	public abstract Enumeration getFeatures();
 	
 	protected boolean boolProp(String property) {
 		return System.getProperty(property).equals("true");

@@ -14,7 +14,7 @@ public class JSR135Screen
 
 	protected void render() {
 		getForm().append(version);
-		Enumeration props = buildPropertiesTable().elements();
+		Enumeration props = buildPropertiesTable();
 
 		while (props.hasMoreElements()) {
 			getForm().append((Item)props.nextElement());

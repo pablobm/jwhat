@@ -13,32 +13,44 @@ public class JSR75Support
 		description = "Access to filesystem and PIM data.";
 	}
 
-	public Hashtable getFeatures() {
-		Hashtable ret = new Hashtable();
-
-		Hashtable lists = new Hashtable();
-		lists.put(new Integer(PIM.CONTACT_LIST), "contacts");
-		lists.put(new Integer(PIM.EVENT_LIST), "events");
-		lists.put(new Integer(PIM.TODO_LIST), "todos");
+	public Enumeration getFeatures() {
+		Vector ret = new Vector();
 
 		PIM pim = PIM.getInstance();
-		Enumeration types = lists.keys();
-		while (types.hasMoreElements()) {
-			int type = ((Integer)types.nextElement()).intValue();
-			String listName = (String)lists.get(new Integer(type));
+		Enumeration lists = getPIMLists();
+		while (lists.hasMoreElements()) {
+			PIMList list = (PIMList)lists.nextElement();
 			boolean supported = true;
 
 			try {
-				pim.openPIMList(type, PIM.READ_ONLY);
+				pim.openPIMList(list.id, PIM.READ_ONLY);
 			}
 			catch (PIMException e) {
 				supported = false;
 			}
 
-			ret.put(listName, new BaseFeature(listName, supported));
+			ret.addElement(new BaseFeature(list.name, supported));
 		}
 
-		return ret;
+		return ret.elements();
+	}
+
+	private Enumeration getPIMLists() {
+		Vector lists = new Vector();
+		lists.addElement(new PIMList(PIM.CONTACT_LIST, "contacts"));
+		lists.addElement(new PIMList(PIM.EVENT_LIST, "events"));
+		lists.addElement(new PIMList(PIM.TODO_LIST, "todos"));
+		return lists.elements();
+	}
+
+	private class PIMList {
+		public int id;
+		public String name;
+
+		public PIMList(int id, String name) {
+			this.id = id;
+			this.name = name;
+		}
 	}
 }
 

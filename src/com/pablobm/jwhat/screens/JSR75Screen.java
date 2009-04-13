@@ -15,13 +15,12 @@ public class JSR75Screen
 	protected void render() {
 		render(null);
 	}
-	protected void render(Hashtable properties) {
+	protected void render(Enumeration properties) {
 		getForm().deleteAll();
 		getForm().append(version);
 		if (properties != null) {
-			Enumeration props = properties.elements();
-			while (props.hasMoreElements()) {
-				getForm().append((Item)props.nextElement());
+			while (properties.hasMoreElements()) {
+				getForm().append((Item)properties.nextElement());
 			}
 		}
 		else {

@@ -12,8 +12,8 @@ public class JSR135Support
 		description = "Handling of media content and protocols";
 	}
 
-	public Hashtable getFeatures() {
-		Hashtable ret = new Hashtable();
+	public Enumeration getFeatures() {
+		Vector ret = new Vector();
 
 		storeBoolFeature(ret, "supports.mixing");
 		storeBoolFeature(ret, "supports.audio.capture");
@@ -23,15 +23,15 @@ public class JSR135Support
 		storeStringFeature(ret, "video.encodings");
 		storeStringFeature(ret, "video.snapshots.encodings");
 
-		return ret;
+		return ret.elements();
 	}
 
-	private void storeBoolFeature(Hashtable storage, String featureName) {
-		storage.put(featureName, new BaseFeature(featureName, boolProp(featureName)));
+	private void storeBoolFeature(Vector storage, String featureName) {
+		storage.addElement(new BaseFeature(featureName, boolProp(featureName)));
 	}
 
-	private void storeStringFeature(Hashtable storage, String featureName) {
-		storage.put(featureName, new BaseFeature(featureName, strProp(featureName)));
+	private void storeStringFeature(Vector storage, String featureName) {
+		storage.addElement(new BaseFeature(featureName, strProp(featureName)));
 	}
 }
 

@@ -8,6 +8,6 @@ public interface ProfileSupport
 	public String getLongName();
 	public String getVersion();
 	public String getDescription();
-	public Hashtable getFeatures();
+	public Enumeration getFeatures();
 	public boolean isSupported();
 }
