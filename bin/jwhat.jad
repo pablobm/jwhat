@@ -1,5 +1,7 @@
 MIDlet-1: jwhat, jwhat.png, com.pablobm.jwhat.JWhatMIDlet
 MIDlet-Description: Detects supported Java profiles
+MIDlet-Jar-Size: 14255
+MIDlet-Jar-URL: jwhat.jar
 MIDlet-Name: jwhat
 MIDlet-Vendor: Unknown
 MIDlet-Version: 1.0

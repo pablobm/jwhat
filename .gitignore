@@ -1,6 +1,5 @@
 *~
-bin/*
-!bin/MANIFEST.MF
+bin/jwhat.jar
 classes/
 tmpclasses/
 
