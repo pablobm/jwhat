@@ -65,6 +65,9 @@ public class MainScreen
 		else if (profile instanceof WMASupport) {
 			new WMAScreen(this).display();
 		}
+		else if (profile instanceof MIDPSupport) {
+			new MIDPScreen(this).display();
+		}
 		else {
 			System.out.println("I don't know what screen to show");
 		}

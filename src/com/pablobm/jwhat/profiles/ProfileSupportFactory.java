@@ -17,6 +17,7 @@ public class ProfileSupportFactory
 	
 	public Enumeration createAll() {
 		Vector ret = new Vector();
+		ret.addElement(new MIDPSupport());
 		ret.addElement(new JSR75Support());
 		ret.addElement(new JSR135Support());
 		ret.addElement(new WMASupport());
