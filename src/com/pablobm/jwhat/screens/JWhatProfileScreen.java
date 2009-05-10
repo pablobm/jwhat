@@ -7,7 +7,7 @@ import com.pablobm.jwhat.*;
 import com.pablobm.jwhat.profiles.*;
 import com.pablobm.jwhat.screens.*;
 
-public abstract class JWhatProfileScreen
+public class JWhatProfileScreen
 	extends JWhatScreen
 	implements CommandListener {
 
@@ -35,6 +35,15 @@ public abstract class JWhatProfileScreen
 	public void commandAction(Command cmd, Displayable disp) {
 		if (cmd == backCmd) {
 			getParent().display();
+		}
+	}
+	
+	protected void render() {
+		getForm().append(version);
+		Enumeration props = buildPropertiesTable();
+
+		while (props.hasMoreElements()) {
+			getForm().append((Item)props.nextElement());
 		}
 	}
 
