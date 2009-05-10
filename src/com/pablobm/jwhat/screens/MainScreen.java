@@ -68,6 +68,9 @@ public class MainScreen
 		else if (profile instanceof MIDPSupport) {
 			new MIDPScreen(this).display();
 		}
+		else if (profile instanceof JSR184Support) {
+			new JSR184Screen(this).display();
+		}
 		else {
 			System.out.println("I don't know what screen to show");
 		}
