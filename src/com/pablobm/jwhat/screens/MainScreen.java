@@ -71,6 +71,9 @@ public class MainScreen
 		else if (profile instanceof JSR184Support) {
 			new JWhatProfileScreen(this, new JSR184Support()).display();
 		}
+		else if (profile instanceof JSR177Support) {
+			new JWhatProfileScreen(this, new JSR177Support()).display();
+		}
 		else {
 			System.out.println("I don't know what screen to show");
 		}

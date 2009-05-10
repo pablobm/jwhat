@@ -22,6 +22,7 @@ public class ProfileSupportFactory
 		ret.addElement(new JSR135Support());
 		ret.addElement(new WMASupport());
 		ret.addElement(new JSR184Support());
+		ret.addElement(new JSR177Support());
 		return ret.elements();
 	}
 }
