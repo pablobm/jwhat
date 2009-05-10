@@ -13,7 +13,7 @@ public class JSR184Support
 	}
 
 	public Enumeration getFeatures() {
-		return null;
+		return new Vector().elements();
 	}
 }
 
