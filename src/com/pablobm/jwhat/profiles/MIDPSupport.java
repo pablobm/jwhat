@@ -6,8 +6,9 @@ public class MIDPSupport
 	extends BaseProfileSupport
 {
 	public MIDPSupport() {
+		String versionString = System.getProperty("microedition.profiles");
 		name = "MIDP";
-		version = System.getProperty("microedition.profiles");
+		version = versionString.substring(versionString.indexOf('-')+1);
 		longName = "Mobile Information Device Profile";
 		description = "Architecture and APIs for mobile applications development";
 	}
