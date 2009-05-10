@@ -47,7 +47,8 @@ public class MainScreen
 		
 		while(profileList.hasMoreElements()) {
 			ProfileSupport ps = (ProfileSupport)profileList.nextElement();
-			String line = ps.getName() + ": v" + ps.getVersion();
+			String version = ps.getVersion();
+			String line = ps.getName() + ": " + (version == null ? "no support" : "v" + ps.getVersion());
 			getList().append(line, null);
 			profiles.addElement(ps);
 		}

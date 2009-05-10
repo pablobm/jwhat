@@ -6,8 +6,8 @@ public class JSR177Support
 	extends BaseProfileSupport
 {
 	public JSR177Support() {
-		name = "JSR177";
-		version = System.getProperty("microedition.smartcardslots") == null ? "-" : "1.0";
+		name = "JSR-177";
+		version = System.getProperty("microedition.smartcardslots") == null ? null : "1.0";
 		longName = "Security and Trust Services API";
 		description = "Cryptographic package";
 	}
