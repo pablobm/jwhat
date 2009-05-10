@@ -57,31 +57,12 @@ public class MainScreen
 	private void changeScreen(int index) {
 		ProfileSupport profile = (ProfileSupport)profiles.elementAt(index);
 
-		if (profile instanceof JSR135Support) {
-			displayProfileInfo(new JSR135Support());
-		}
-		else if (profile instanceof JSR75Support) {
+		if (profile instanceof JSR75Support) {
 			new JSR75Screen(this).display();
 		}
-		else if (profile instanceof WMASupport) {
-			displayProfileInfo(new WMASupport());
-		}
-		else if (profile instanceof MIDPSupport) {
-			displayProfileInfo(new MIDPSupport());
-		}
-		else if (profile instanceof JSR184Support) {
-			displayProfileInfo(new JSR184Support());
-		}
-		else if (profile instanceof JSR177Support) {
-			displayProfileInfo(new JSR177Support());
-		}
 		else {
-			System.out.println("I don't know what screen to show");
+			new JWhatProfileScreen(this, profile).display();
 		}
-	}
-	
-	private void displayProfileInfo(ProfileSupport profile) {
-		new JWhatProfileScreen(this, profile).display();
 	}
 }
 
