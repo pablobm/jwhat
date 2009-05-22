@@ -42,10 +42,6 @@ public class JSR82Support
 		return ret;
 	}
 	
-	private void storeStringFeature(Vector storage, String featureName) {
-		storage.addElement(new BaseFeature(featureName, strProp(featureName)));
-	}
-	
 	protected String strProp(String property) {
 		return System.getProperty(property);
 	}

@@ -25,13 +25,5 @@ public class JSR135Support
 
 		return ret.elements();
 	}
-
-	private void storeBoolFeature(Vector storage, String featureName) {
-		storage.addElement(new BaseFeature(featureName, boolProp(featureName)));
-	}
-
-	private void storeStringFeature(Vector storage, String featureName) {
-		storage.addElement(new BaseFeature(featureName, strProp(featureName)));
-	}
 }
 

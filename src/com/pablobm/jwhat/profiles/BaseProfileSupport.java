@@ -35,5 +35,15 @@ public abstract class BaseProfileSupport
 	protected String strProp(String property) {
 		return System.getProperty(property);
 	}
+	
+	
+	protected void storeBoolFeature(Vector storage, String featureName) {
+		storage.addElement(new BaseFeature(featureName, boolProp(featureName)));
+	}
+
+	protected void storeStringFeature(Vector storage, String featureName) {
+		storage.addElement(new BaseFeature(featureName, strProp(featureName)));
+	}
+
 }
 

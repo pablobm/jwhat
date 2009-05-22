@@ -24,9 +24,5 @@ public class MIDPSupport
 
 		return ret.elements();
 	}
-
-	private void storeStringFeature(Vector storage, String featureName) {
-		storage.addElement(new BaseFeature(featureName, strProp(featureName)));
-	}
 }
 
