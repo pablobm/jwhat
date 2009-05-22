@@ -8,8 +8,8 @@ public class JSR82Support
 	public JSR82Support() {
 		name = "JSR-82";
 		version = readVersion();
-		longName = "Mobile Media API";
-		description = "Handling of media content and protocols";
+		longName = "Bluetooth and OBEX";
+		description = "Bluetooh communications and OBject EXchange protocol (OBEX)";
 	}
 
 	public Enumeration getFeatures() {
